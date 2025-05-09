@@ -1,0 +1,52 @@
+{
+  "configVersion": "v3",
+  "app": {
+    "appId": 1057758,
+    "appName": "Bright Lights",
+    "appType": "watchface",
+    "version": {
+      "code": 2,
+      "name": "1.0.1"
+    },
+    "icon": "icon.png",
+    "vender": "goalcoffee",
+    "cover": [
+      "icon.png"
+    ],
+    "description": "Bright Lights Watchface"
+  },
+  "runtime": {
+    "apiVersion": {
+      "compatible": "1.0.0",
+      "target": "1.0.1",
+      "minVersion": "1.0.0"
+    }
+  },
+  "permissions": [],
+  "targets": {
+    "common": {
+      "module": {
+        "watchface": {
+          "path": "watchface/index",
+          "main": 1,
+          "editable": 1,
+          "lockscreen": 1,
+          "photoscreen": 0
+        }
+      },
+      "platforms": [
+        {
+          "st": "r"
+        }
+      ],
+      "designWidth": 480
+    }
+  },
+  "i18n": {
+    "en-US": {
+      "appName": "Bright Lights"
+    }
+  },
+  "defaultLanguage": "en-US",
+  "debug": false
+}

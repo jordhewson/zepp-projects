@@ -46,10 +46,12 @@ export const colors = {
   secondary: 0xbdbdbd,
   grey: 0x828282,
   red: 0xeb5757,
+  red_dark: 0x6E0D0D,
   orange: 0xF2994A,
   orange_dark: 0x5F3007,
   yellow: 0xF2C94C,
   green: 0x27AE60,
+  green_dark: 0x0F4325,
   blue: 0x2F80ED,
   blue_dark: 0x0D4896,
   cyan: 0x56CCF2,
@@ -60,12 +62,14 @@ export const colors = {
   background: 0x000000,
   aod: 0x767578,
   outline: 0x4f4f4f,
+  braun: 0xE4B301,
+  braun_dark: 0x514000,
 };
 
 export const fontFamily = {
   regular: 'fonts/Inter-Regular.ttf',
   bold: 'fonts/Inter-Bold.ttf',
-  number: 'fonts/Inter-Medium.ttf',
+  number: 'fonts/Inter-Regular.ttf',
   cursive: 'fonts/Pacifico-Regular.ttf'
 };
 

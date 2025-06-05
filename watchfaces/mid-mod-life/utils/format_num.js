@@ -3,3 +3,13 @@ export function formatK(number) {
     const formatted = (rounded / 10).toString();
     return `${formatted}k`;
 }
+
+export function formatDateString(number) {
+    let numberString = '';
+    if (number > 9) {
+        numberString = number.toString();
+    } else {
+        numberString = `0${number.toString()}`
+    }
+    return numberString;
+}

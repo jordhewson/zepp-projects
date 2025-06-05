@@ -1,5 +1,5 @@
 import { colors, dayOfWeek } from '../utils/constants';
-import { formatK } from '../utils/format_num';
+import { formatDateString, formatK } from '../utils/format_num';
 
 import {
   bgProps,
@@ -72,10 +72,9 @@ WatchFace({
       optional_types: types,
       count: 6,
       tips_BG: 'colors/color_tip.png',
-      tips_x: 172,
-      tips_y: 210,
-      tips_width: 110,
-      tips_margin: 10 // optional, default value: 0
+      tips_x: 170,
+      tips_y: 425,
+      tips_width: 139,
     })
     //100%mask
     maskCover = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_MASK, {
@@ -109,7 +108,7 @@ WatchFace({
     const update = () => {
       const time = hmSensor.createSensor(hmSensor.id.TIME)
       const day = dayOfWeek[time.week - 1]
-      const date = time.day.toString()
+      const date = formatDateString(time.day)
 
       if (prevValue === date) {
         return;

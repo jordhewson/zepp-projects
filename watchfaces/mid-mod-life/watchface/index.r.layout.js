@@ -96,7 +96,7 @@ export const topDialLink = {
   w: 100,
   h: 100,
   // color: colors.red,
-  type: hmUI.data_type.READINESS
+  type: hmUI.data_type.BIO_CHARGE
 };
 
 export const topDialText = {

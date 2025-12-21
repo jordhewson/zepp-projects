@@ -172,11 +172,11 @@ WatchFace({
     })
     hmUI.createWidget(hmUI.widget.TEXT_IMG, {
       ...topDialTextImg,
-      type: hmUI.data_type.READINESS
+      type: hmUI.data_type.BIO_CHARGE
     })
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...topDialArc,
-      type: hmUI.data_type.READINESS,
+      type: hmUI.data_type.BIO_CHARGE,
       color: color
     })
     hmUI.createWidget(hmUI.widget.IMG, topDialIcon);

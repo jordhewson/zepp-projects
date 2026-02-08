@@ -66,32 +66,32 @@ export const progressArc = {
 
 export const arc1Progress = {
   ...progressArc,
-  start_angle: -70,
+  start_angle: -60,
   end_angle: -10,
 };
 
 export const arc2Progress = {
   ...progressArc,
-  start_angle: 20,
+  start_angle: 30,
   end_angle: 80,
 };
 
 export const arc3Progress = {
   ...progressArc,
-  start_angle: 110,
+  start_angle: 120,
   end_angle: 170,
 };
 
 export const arc4Progress = {
   ...progressArc,
-  start_angle: 200,
+  start_angle: 210,
   end_angle: 260,
 };
 
 // Outside Icons
 export const arc1Icon = {
-  x: 17,
-  y: 175,
+  x: 30,
+  y: 140,
   h: 30,
   w: 30,
   angle: -80,
@@ -100,8 +100,8 @@ export const arc1Icon = {
 };
 
 export const arc2Icon = {
-  x: 290,
-  y: 17,
+  x: 320,
+  y: 30,
   h: 30,
   w: 30,
   angle: 10,
@@ -110,8 +110,8 @@ export const arc2Icon = {
 };
 
 export const arc3Icon = {
-  x: 445,
-  y: 290,
+  x: 435,
+  y: 320,
   h: 30,
   w: 30,
   angle: 100,
@@ -120,8 +120,8 @@ export const arc3Icon = {
 };
 
 export const arc4Icon = {
-  x: 175,
-  y: 445,
+  x: 138,
+  y: 430,
   h: 30,
   w: 30,
   angle: 10,
@@ -147,7 +147,7 @@ export const arcText = {
 export const arc1Text = {
   ...arcText,
   start_angle: -100,
-  end_angle: -80,
+  end_angle: -70,
   mode: 0,
   align_h: hmUI.align.RIGHT,
 };
@@ -155,7 +155,7 @@ export const arc1Text = {
 export const arc2Text = {
   ...arcText,
   start_angle: -10,
-  end_angle: 10,
+  end_angle: 20,
   mode: 0,
   align_h: hmUI.align.RIGHT,
 };
@@ -163,7 +163,7 @@ export const arc2Text = {
 export const arc3Text = {
   ...arcText,
   start_angle: 80,
-  end_angle: 100,
+  end_angle: 110,
   mode: 0,
   align_h: hmUI.align.RIGHT,
 };
@@ -171,7 +171,7 @@ export const arc3Text = {
 export const arc4Text = {
   ...arcText,
   start_angle: 170,
-  end_angle: 190,
+  end_angle: 200,
   mode: 1,
   align_h: hmUI.align.LEFT,
 };

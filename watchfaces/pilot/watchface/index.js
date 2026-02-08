@@ -45,14 +45,56 @@ let prevSteps = 0;
 // Helper to get colors based on edit type
 function getThemeColors(type) {
   const themeMap = {
-    1: { background: 'background/bg_green.png', color: colors.green, dark: colors.green_dark }, // Note: case 1 was green in dials, braun in pointers. I unified them here.
-    2: { background: 'background/bg_blue.png', color: colors.cyan, dark: colors.blue_dark },
-    3: { background: 'background/bg_red.png', color: colors.red, dark: colors.outline },
-    4: { background: 'background/bg_orange.png', color: colors.orange, dark: colors.orange_dark },
-    5: { background: 'background/bg_purple.png', color: colors.orange, dark: colors.purple_dark },
-    6: { background: 'background/bg_grey.png', color: colors.braun, dark: colors.outline },
+    1: {
+      background: 'background/bg_summer.png',
+      primary: colors.amber_flame,
+      primary_dark: colors.dark_walnut,
+      secondary: colors.amber_flame,
+      secondary_dark: colors.dark_walnut,
+    },
+    2: {
+      background: 'background/bg_scuba.png',
+      primary: colors.steel_blue,
+      primary_dark: colors.deepspace_blue,
+      secondary: colors.steel_blue,
+      secondary_dark: colors.deepspace_blue,
+    },
+    3: {
+      background: 'background/bg_bush.png',
+      primary: colors.dusty_olive,
+      primary_dark: colors.ebony_green,
+      secondary: colors.dusty_olive,
+      secondary_dark: colors.ebony_green,
+    },
+    4: {
+      background: 'background/bg_submarine.png',
+      primary: colors.tomato_jam,
+      primary_dark: colors.chestnut,
+      secondary: colors.stormy_teal,
+      secondary_dark: colors.slate,
+    },
+    5: {
+      background: 'background/bg_ocean.png',
+      primary: colors.light_sea,
+      primary_dark: colors.jet_black,
+      secondary: colors.dark_slate,
+      secondary_dark: colors.jet_black,
+    },
+    6: {
+      background: 'background/bg_forest.png',
+      primary: colors.bitter_chocolate,
+      primary_dark: colors.graphite,
+      secondary: colors.forest_grey,
+      secondary_dark: colors.graphite,
+    },
   };
-  return themeMap[type] || { color: colors.braun, dark: colors.braun_dark };
+  return themeMap[type] || {
+    background: 'background/bg_summer.png',
+    primary: colors.amber_flame,
+    primary_dark: colors.dark_walnut,
+    secondary: colors.amber_flame,
+    secondary_dark: colors.dark_walnut,
+  };
 }
 
 function getTimeInMins(time) {
@@ -89,12 +131,12 @@ WatchFace({
 
   buildColorSelector() {
     const types = [
-      { type: 1, preview: 'colors/green.png', title_sc: 'Green', title_tc: 'Green', title_en: 'Green' },
-      { type: 2, preview: 'colors/blue.png', title_sc: 'Blue', title_tc: 'Blue', title_en: 'Blue' },
-      { type: 3, preview: 'colors/red.png', title_sc: 'Red', title_tc: 'Red', title_en: 'Red' },
-      { type: 4, preview: 'colors/orange.png', title_sc: 'Orange', title_tc: 'Orange', title_en: 'Orange' },
-      { type: 5, preview: 'colors/purple.png', title_sc: 'Purple', title_tc: 'Purple', title_en: 'Purple' },
-      { type: 6, preview: 'colors/grey.png', title_sc: 'Grey', title_tc: 'Grey', title_en: 'Grey' },
+      { type: 1, preview: 'colors/summer.png', title_sc: 'Summer', title_tc: 'Summer', title_en: 'Summer' },
+      { type: 2, preview: 'colors/scuba.png', title_sc: 'Scuba', title_tc: 'Scuba', title_en: 'Scuba' },
+      { type: 3, preview: 'colors/bush.png', title_sc: 'Bush', title_tc: 'Bush', title_en: 'Bush' },
+      { type: 4, preview: 'colors/submarine.png', title_sc: 'Submarine', title_tc: 'Submarine', title_en: 'Submarine' },
+      { type: 5, preview: 'colors/ocean.png', title_sc: 'Ocean', title_tc: 'Ocean', title_en: 'Ocean' },
+      { type: 6, preview: 'colors/forest.png', title_sc: 'Forest', title_tc: 'Forest', title_en: 'Forest' },
     ]
     editGroup = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_GROUP, {
       edit_id: 101,
@@ -102,8 +144,8 @@ WatchFace({
       y: 0,
       w: 480,
       h: 480,
-      select_image: 'background/bg_green.png',
-      un_select_image: 'background/bg_green.png',
+      select_image: 'background/bg_summer.png',
+      un_select_image: 'background/bg_summer.png',
       default_type: 1,
       optional_types: types,
       count: 6,
@@ -134,7 +176,13 @@ WatchFace({
 
   buildBackground() {
     const editType = editGroup.getProperty(hmUI.prop.CURRENT_TYPE)
-    const { background: bg, color: color, dark: color_dark } = getThemeColors(editType)
+    const { 
+      background: bg,
+      primary: primary,
+      primary_dark: primary_dark,
+      secondary: secondary,
+      secondary_dark: secondary_dark 
+    } = getThemeColors(editType)
     hmUI.createWidget(hmUI.widget.IMG, {
       ...bgProps,
       src: bg
@@ -148,7 +196,13 @@ WatchFace({
     console.log(`current color theme: ${editType}`)
 
     // Define current colors
-    const { background: bg, color: color, dark: color_dark } = getThemeColors(editType)
+    const { 
+      background: bg,
+      primary: primary,
+      primary_dark: primary_dark,
+      secondary: secondary,
+      secondary_dark: secondary_dark 
+    } = getThemeColors(editType)
 
     // Arc 1
     hmUI.createWidget(hmUI.widget.IMG, arc1Icon);
@@ -159,11 +213,12 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc1Progress,
       level: 100,
+      color: secondary_dark,
     });
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc1Progress,
       type: hmUI.data_type.WEATHER_CURRENT,
-      color: color
+      color: secondary,
     });
 
     // Arc 2
@@ -175,11 +230,12 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc2Progress,
       level: 100,
+      color: secondary_dark
     });
     const arc2 = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc2Progress,
       level: 0,
-      color: color
+      color: secondary,
     });
 
     // Arc 3
@@ -190,11 +246,12 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc3Progress,
       level: 100,
+      color: secondary_dark
     });
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc3Progress,
       type: hmUI.data_type.STEP,
-      color: color
+      color: secondary,
     });
 
     // Arc 4
@@ -205,17 +262,19 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc4Progress,
       level: 100,
+      color: secondary_dark,
     });
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc4Progress,
       type: hmUI.data_type.HEART,
-      color: color
+      color: secondary,
     });
 
     // Top Dial
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...topDialArc,
       level: 100,
+      color: primary_dark
     })
     hmUI.createWidget(hmUI.widget.TEXT_IMG, {
       ...topDialTextImg,
@@ -224,19 +283,20 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...topDialArc,
       type: hmUI.data_type.BIO_CHARGE,
-      color: color
+      color: primary
     })
     hmUI.createWidget(hmUI.widget.IMG, topDialIcon);
 
     // Left Dial
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...leftDialArc,
-      level: 100
+      level: 100,
+      color: primary_dark
     });
     const leftArcWidget = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...leftDialArc,
       level: 0,
-      color: color
+      color: primary,
     });
     const leftTextWidget = hmUI.createWidget(hmUI.widget.TEXT, {
       ...leftDialText,
@@ -247,16 +307,17 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...bottomDialArc,
       level: 100,
+      color: primary_dark
     })
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...bottomDialArc,
       type: hmUI.data_type.SLEEP,
-      color: color_dark
+      color: primary
     })
     const bottomArcWidget = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...bottomDialArc,
       level: 0,
-      color: color
+      color: primary
     })
     const bottomTextWidget = hmUI.createWidget(hmUI.widget.TEXT, {
       ...bottomDialText,
@@ -267,7 +328,7 @@ WatchFace({
     hmUI.createWidget(hmUI.widget.CIRCLE, {
       ...rightDialArc,
       // level: 100,
-      color: color_dark
+      color: primary_dark
     })
     const dayWidget = hmUI.createWidget(hmUI.widget.TEXT, dayText)
     const dateWidget = hmUI.createWidget(hmUI.widget.TEXT, dateText)
@@ -333,7 +394,7 @@ WatchFace({
         src: sunIconStatus
       })
 
-      arc2.setProperty(hmUI.prop.MORE, { ...arc2Progress, color: color, level: sunLevel })
+      arc2.setProperty(hmUI.prop.MORE, { ...arc2Progress, color: secondary, level: sunLevel })
 
       arc1Stats.setProperty(hmUI.prop.MORE, { ...arc1Text, text: weatherText })
       arc2Stats.setProperty(hmUI.prop.MORE, { ...arc2Text, text: sunText })
@@ -346,13 +407,13 @@ WatchFace({
 
       leftTextWidget.setProperty(hmUI.prop.MORE, { ...leftDialText, text: `${totalPai}` })
       pai.totalpai < 100 ?
-        leftArcWidget.setProperty(hmUI.prop.MORE, { ...leftDialArc, level: totalPai, color: color })
-        : leftArcWidget.setProperty(hmUI.prop.MORE, { ...leftDialArc, level: 100, color: color })
+        leftArcWidget.setProperty(hmUI.prop.MORE, { ...leftDialArc, level: totalPai, color: primary })
+        : leftArcWidget.setProperty(hmUI.prop.MORE, { ...leftDialArc, level: 100, color: primary })
 
       bottomTextWidget.setProperty(hmUI.prop.MORE, { ...bottomDialText, text: `${sleepScore}` })
       sleepScore < 100 ?
-        bottomArcWidget.setProperty(hmUI.prop.MORE, { ...bottomDialArc, level: sleepScore, color: color })
-        : bottomArcWidget.setProperty(hmUI.prop.MORE, { ...bottomDialArc, level: 100, color: color })
+        bottomArcWidget.setProperty(hmUI.prop.MORE, { ...bottomDialArc, level: sleepScore, color: primary })
+        : bottomArcWidget.setProperty(hmUI.prop.MORE, { ...bottomDialArc, level: 100, color: primary })
     };
 
     hmUI.createWidget(hmUI.widget.WIDGET_DELEGATE, {
@@ -407,16 +468,22 @@ WatchFace({
     console.log(`current color theme: ${editType}`)
 
     // Define current colors
-    const { color: color, dark: color_dark } = getThemeColors(editType)
+    const { 
+      background: bg,
+      primary: primary,
+      primary_dark: primary_dark,
+      secondary: secondary,
+      secondary_dark: secondary_dark 
+    } = getThemeColors(editType)
 
     hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProps);
     hmUI.createWidget(hmUI.widget.CIRCLE, {
       ...coverProps,
-      // color: color
+      // color: primary
     });
     hmUI.createWidget(hmUI.widget.CIRCLE, {
       ...screwProps,
-      // color: color_dark
+      // color: primary_dark
     });
   },
 

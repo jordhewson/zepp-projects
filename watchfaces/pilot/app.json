@@ -8,10 +8,10 @@
       "code": 2,
       "name": "1.0.1"
     },
-    "icon": "colors/green.png",
+    "icon": "colors/summer.png",
     "vender": "goalcoffee",
     "cover": [
-      "colors/green.png"
+      "colors/summer.png"
     ],
     "description": "Pilot Watchface"
   },

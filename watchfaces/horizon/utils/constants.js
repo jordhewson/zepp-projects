@@ -42,46 +42,70 @@ export const months = [
 ];
 
 export const colors = {
+  // Defaults
   primary: 0xffffff,
   secondary: 0xbdbdbd,
-  dark_walnut: 0x522C00,
-  amber_flame: 0xFFB703,
-  deepspace_blue: 0x023047,
-  flag_red: 0xc1121f,
-  steel_blue: 0x669bbc,
-  dusty_olive: 0x656d4a,
-  ebony_green: 0x333D29,
-  tomato_jam: 0xc44536,
-  chestnut: 0x772e25,
-  slate: 0x283d3b,
-  stormy_teal: 0x197278,
-  jet_black: 0x092327,
-  dark_slate: 0x0B5351,
-  light_sea: 0x00A9A5,
-  graphite: 0x282B28,
-  forest_grey: 0x3E5641,
-  bitter_chocolate: 0x723428,
-  grey: 0x828282,
-  red: 0xad2e24,
-  red_dark: 0x540804,
-  orange: 0xF2994A,
-  orange_dark: 0x5F3007,
-  yellow: 0xF2C94C,
-  green: 0x52796f,
-  green_dark: 0x354f52,
-  blue: 0x457b9d,
-  blue_dark: 0x1d3557,
-  cyan: 0x56CCF2,
-  cyan_dark: 0x095872,
-  purple: 0x7678ed,
-  purple_dark: 0x3d348b,
-  navy: 0x00162C,
-  navy_dark: 0x1A237E,
   background: 0x000000,
   aod: 0x767578,
   outline: 0x333333,
   braun: 0xE4B301,
   braun_dark: 0x514000,
+
+  // Forest / Moss / Verdant
+  deep_moss: 0x333D29,
+  clover_green: 0x656D4A,
+  forest_shadow: 0x2D6A4F,
+  mint_fern: 0x95D5B2,
+  deep_ivy: 0x1B4332,
+  lively_leaf: 0x52B788,
+  eucalyptus: 0xB2BEB5,
+  sage: 0x8A9A5B,
+  dark_evergreen: 0x283D3B,
+
+  // Blues / Deep Sea / Pacific
+  midnight_ocean: 0x223F58,
+  sky_blue: 0xA5D6E7,
+  steel_blue: 0x4682B4,
+  pacific_blue: 0x00B4D8,
+  abyssal_navy: 0x03045E,
+  ocean_blue: 0x0077B6,
+  ice_blue: 0x90E0EF,
+  prussian_blue: 0x003049,
+  air_force_blue: 0x669BBC,
+  petrol_teal: 0x197278,
+
+  // Reds / Flare / Earthy Reds
+  flare_red: 0xE5383B,
+  blood_moon: 0x660708,
+  terracotta: 0xE2725B,
+  burnt_sienna: 0x772E25,
+  crimson_clay: 0xC44536,
+  faded_rose: 0x966969,
+  oxide_red: 0x8A3324,
+
+  // Golds / Golden Hour / Warmth
+  burnt_oak: 0x493628,
+  amber_honey: 0xFFB627,
+  dark_tobacco: 0x261C02,
+  goldenrod: 0xDAA520,
+  champagne: 0xF1E5AC,
+  ochre: 0xCC7722,
+
+  // Browns / Neutrals / Sand
+  dark_espresso: 0x3D2D29,
+  parchment: 0xDFD3C3,
+  roast_coffee: 0x50322B,
+  dark_cacao: 0x483232,
+
+  // Purples / Twilight
+  night_plum: 0x352A3C,
+  thistle: 0xD8BFD8,
+  muted_violet: 0x70587E,
+
+  // Grayscale / Technical
+  slate_gray: 0x666666,
+  charcoal: 0x333333,
+  graphite: 0x3D3D3D
 };
 
 export const fontFamily = {

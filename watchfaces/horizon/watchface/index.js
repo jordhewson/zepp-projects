@@ -35,6 +35,9 @@ import {
   arc2Icon,
   arc1Icon,
   arc1Text,
+  aodBgProps,
+  aodPointerProps,
+  aodCoverProps,
 } from './index.r.layout';
 
 let editGroup = null;
@@ -46,54 +49,110 @@ let prevSteps = 0;
 function getThemeColors(type) {
   const themeMap = {
     1: {
-      background: 'background/bg_summer.png',
-      primary: colors.amber_flame,
-      primary_dark: colors.dark_walnut,
-      secondary: colors.amber_flame,
-      secondary_dark: colors.dark_walnut,
+      background: 'background/bg_bush.png',
+      primary: colors.clover_green,
+      primary_dark: colors.deep_moss,
+      secondary: colors.clover_green,
+      secondary_dark: colors.deep_moss,
     },
     2: {
-      background: 'background/bg_scuba.png',
+      background: 'background/bg_pacific.png',
       primary: colors.steel_blue,
-      primary_dark: colors.deepspace_blue,
-      secondary: colors.steel_blue,
-      secondary_dark: colors.deepspace_blue,
+      primary_dark: colors.midnight_ocean,
+      secondary: colors.sky_blue,
+      secondary_dark: colors.midnight_ocean,
     },
     3: {
-      background: 'background/bg_bush.png',
-      primary: colors.dusty_olive,
-      primary_dark: colors.ebony_green,
-      secondary: colors.dusty_olive,
-      secondary_dark: colors.ebony_green,
+      background: 'background/bg_flare.png',
+      primary: colors.flare_red,
+      primary_dark: colors.blood_moon,
+      secondary: colors.slate_gray,
+      secondary_dark: colors.charcoal,
     },
     4: {
-      background: 'background/bg_submarine.png',
-      primary: colors.tomato_jam,
-      primary_dark: colors.chestnut,
-      secondary: colors.stormy_teal,
-      secondary_dark: colors.slate,
+      background: 'background/bg_golden_hour.png',
+      primary: colors.goldenrod,
+      primary_dark: colors.dark_tobacco,
+      secondary: colors.amber_honey,
+      secondary_dark: colors.burnt_oak,
     },
     5: {
-      background: 'background/bg_ocean.png',
-      primary: colors.light_sea,
-      primary_dark: colors.jet_black,
-      secondary: colors.dark_slate,
-      secondary_dark: colors.jet_black,
+      background: 'background/bg_poppy.png',
+      primary: colors.terracotta,
+      primary_dark: colors.dark_espresso,
+      secondary: colors.parchment,
+      secondary_dark: colors.dark_espresso,
     },
     6: {
-      background: 'background/bg_forest.png',
-      primary: colors.bitter_chocolate,
+      background: 'background/bg_verdant.png',
+      primary: colors.lively_leaf,
+      primary_dark: colors.deep_ivy,
+      secondary: colors.mint_fern,
+      secondary_dark: colors.forest_shadow,
+    },
+    7: {
+      background: 'background/bg_deep_sea.png',
+      primary: colors.ice_blue,
+      primary_dark: colors.ocean_blue,
+      secondary: colors.pacific_blue,
+      secondary_dark: colors.abyssal_navy,
+    },
+    8: {
+      background: 'background/bg_sea_glass.png',
+      primary: colors.sage,
       primary_dark: colors.graphite,
-      secondary: colors.forest_grey,
+      secondary: colors.eucalyptus,
+      secondary_dark: colors.graphite,
+    },
+    9: {
+      background: 'background/bg_twilight.png',
+      primary: colors.muted_violet,
+      primary_dark: colors.night_plum,
+      secondary: colors.thistle,
+      secondary_dark: colors.night_plum,
+    },
+    10: {
+      background: 'background/bg_afterglow.png',
+      primary: colors.champagne,
+      primary_dark: colors.roast_coffee,
+      secondary: colors.goldenrod,
+      secondary_dark: colors.roast_coffee,
+    },
+    11: {
+      background: 'background/bg_scuba.png',
+      primary: colors.air_force_blue,
+      primary_dark: colors.prussian_blue,
+      secondary: colors.air_force_blue,
+      secondary_dark: colors.prussian_blue,
+    },
+    12: {
+      background: 'background/bg_submarine.png',
+      primary: colors.crimson_clay,
+      primary_dark: colors.burnt_sienna,
+      secondary: colors.petrol_teal,
+      secondary_dark: colors.dark_evergreen,
+    },
+    13: {
+      background: 'background/bg_terracotta.png',
+      primary: colors.faded_rose,
+      primary_dark: colors.dark_cacao,
+      secondary: colors.faded_rose,
+      secondary_dark: colors.dark_cacao,
+    },
+    14: {
+      background: 'background/bg_dusk.png',
+      primary: colors.ochre,
+      primary_dark: colors.graphite,
+      secondary: colors.oxide_red,
       secondary_dark: colors.graphite,
     },
   };
   return themeMap[type] || {
-    background: 'background/bg_summer.png',
-    primary: colors.amber_flame,
-    primary_dark: colors.dark_walnut,
-    secondary: colors.amber_flame,
-    secondary_dark: colors.dark_walnut,
+    background: 'background/bg_bush.png',
+    primary: colors.clover_green,
+    primary_dark: colors.deep_moss,
+    secondary: colors.clover_green,
+    secondary_dark: colors.deep_moss,
   };
 }
 
@@ -131,12 +190,20 @@ WatchFace({
 
   buildColorSelector() {
     const types = [
-      { type: 1, preview: 'colors/summer.png', title_sc: 'Summer', title_tc: 'Summer', title_en: 'Summer' },
-      { type: 2, preview: 'colors/scuba.png', title_sc: 'Scuba', title_tc: 'Scuba', title_en: 'Scuba' },
-      { type: 3, preview: 'colors/bush.png', title_sc: 'Bush', title_tc: 'Bush', title_en: 'Bush' },
-      { type: 4, preview: 'colors/submarine.png', title_sc: 'Submarine', title_tc: 'Submarine', title_en: 'Submarine' },
-      { type: 5, preview: 'colors/ocean.png', title_sc: 'Ocean', title_tc: 'Ocean', title_en: 'Ocean' },
-      { type: 6, preview: 'colors/forest.png', title_sc: 'Forest', title_tc: 'Forest', title_en: 'Forest' },
+      { type: 1, preview: 'colors/bush.png', title_sc: '灌木', title_tc: '灌木', title_en: 'Bush' },
+      { type: 2, preview: 'colors/pacific.png', title_sc: '太平洋', title_tc: '太平洋', title_en: 'Pacific' },
+      { type: 3, preview: 'colors/flare.png', title_sc: '闪耀', title_tc: '闪耀', title_en: 'Flare' },
+      { type: 4, preview: 'colors/golden_hour.png', title_sc: '黄金时刻', title_tc: '黃金時刻', title_en: 'Golden Hour' },
+      { type: 5, preview: 'colors/poppy.png', title_sc: '罂粟', title_tc: '罌粟', title_en: 'Poppy' },
+      { type: 6, preview: 'colors/verdant.png', title_sc: '青葱', title_tc: '青蔥', title_en: 'Verdant' },
+      { type: 7, preview: 'colors/deep_sea.png', title_sc: '深海', title_tc: '深海', title_en: 'Deep Sea' },
+      { type: 8, preview: 'colors/sea_glass.png', title_sc: '海玻璃', title_tc: '海玻璃', title_en: 'Sea Glass' },
+      { type: 9, preview: 'colors/twilight.png', title_sc: '暮色', title_tc: '暮色', title_en: 'Twilight' },
+      { type: 10, preview: 'colors/afterglow.png', title_sc: '晚霞', title_tc: '晚霞', title_en: 'Afterglow' },
+      { type: 11, preview: 'colors/scuba.png', title_sc: '水肺', title_tc: '水肺', title_en: 'Scuba' },
+      { type: 12, preview: 'colors/submarine.png', title_sc: '潜艇', title_tc: '潛艇', title_en: 'Submarine' },
+      { type: 13, preview: 'colors/terracotta.png', title_sc: '陶土', title_tc: '陶土', title_en: 'Terracotta' },
+      { type: 14, preview: 'colors/dusk.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Dusk' }
     ]
     editGroup = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_GROUP, {
       edit_id: 101,
@@ -144,11 +211,11 @@ WatchFace({
       y: 0,
       w: 480,
       h: 480,
-      select_image: 'background/bg_summer.png',
-      un_select_image: 'background/bg_summer.png',
+      select_image: 'colors/select.png',
+      un_select_image: 'colors/unselect.png',
       default_type: 1,
       optional_types: types,
-      count: 6,
+      count: types.length,
       tips_BG: 'colors/color_tip.png',
       tips_x: 170,
       tips_y: 425,
@@ -163,30 +230,22 @@ WatchFace({
       src: 'colors/edit_bg.png',
       show_level: hmUI.show_level.ONLY_EDIT
     })
-    // //70%msk
-    // mask = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_FG_MASK, {
-    //   x: 0,
-    //   y: 0,
-    //   w: 480,
-    //   h: 480,
-    //   src: 'colors/edit_bg.png',
-    //   show_level: hmUI.show_level.ONLY_EDIT
-    // })    
   },
 
   buildBackground() {
     const editType = editGroup.getProperty(hmUI.prop.CURRENT_TYPE)
-    const { 
+    const {
       background: bg,
       primary: primary,
       primary_dark: primary_dark,
       secondary: secondary,
-      secondary_dark: secondary_dark 
+      secondary_dark: secondary_dark
     } = getThemeColors(editType)
     hmUI.createWidget(hmUI.widget.IMG, {
       ...bgProps,
       src: bg
     });
+    hmUI.createWidget(hmUI.widget.IMG, aodBgProps);
   },
 
   buildDials() {
@@ -196,12 +255,12 @@ WatchFace({
     console.log(`current color theme: ${editType}`)
 
     // Define current colors
-    const { 
+    const {
       background: bg,
       primary: primary,
       primary_dark: primary_dark,
       secondary: secondary,
-      secondary_dark: secondary_dark 
+      secondary_dark: secondary_dark
     } = getThemeColors(editType)
 
     // Arc 1
@@ -468,17 +527,22 @@ WatchFace({
     console.log(`current color theme: ${editType}`)
 
     // Define current colors
-    const { 
+    const {
       background: bg,
       primary: primary,
       primary_dark: primary_dark,
       secondary: secondary,
-      secondary_dark: secondary_dark 
+      secondary_dark: secondary_dark
     } = getThemeColors(editType)
 
     hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProps);
+    hmUI.createWidget(hmUI.widget.TIME_POINTER, aodPointerProps);
     hmUI.createWidget(hmUI.widget.CIRCLE, {
       ...coverProps,
+      // color: primary
+    });
+    hmUI.createWidget(hmUI.widget.CIRCLE, {
+      ...aodCoverProps,
       // color: primary
     });
     hmUI.createWidget(hmUI.widget.CIRCLE, {

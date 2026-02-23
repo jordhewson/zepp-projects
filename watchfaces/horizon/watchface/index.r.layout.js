@@ -9,22 +9,16 @@ import {
 export const bgProps = {
   x: 0,
   y: 0,
-  src: 'background/bg_green.png',
+  src: 'background/bg_aod.png',
   show_level: hmUI.show_level.ONLY_NORMAL,
 };
 
-export const bgConfig = [
-  { id: 1, preview: 'background/bg1.png', path: 'background/bg1.png' },
-  { id: 2, preview: 'background/bg2.png', path: 'background/bg2.png' }
-];
-
-export const bgLevel = [
-  'background/bg0.png',
-  'background/bg1.png',
-  'background/bg2.png',
-  'background/bg3.png',
-  'background/bg4.png'
-];
+export const aodBgProps = {
+  x: 0,
+  y: 0,
+  src: 'background/bg_aod.png',
+  show_level: hmUI.show_level.ONAL_AOD,
+};
 
 export const pointerProps = {
   hour_centerX: SCREEN.centerX,
@@ -37,6 +31,21 @@ export const pointerProps = {
   minute_posX: SCREEN.centerX,
   minute_posY: SCREEN.centerY,
   minute_path: 'pointers/minute.png',
+  show_level: hmUI.show_level.ONLY_NORMAL,
+};
+
+export const aodPointerProps = {
+  hour_centerX: SCREEN.centerX,
+  hour_centerY: SCREEN.centerY,
+  hour_posX: SCREEN.centerX,
+  hour_posY: SCREEN.centerY,
+  hour_path: 'pointers/hour_aod.png',
+  minute_centerX: SCREEN.centerX,
+  minute_centerY: SCREEN.centerY,
+  minute_posX: SCREEN.centerX,
+  minute_posY: SCREEN.centerY,
+  minute_path: 'pointers/minute_aod.png',
+  show_level: hmUI.show_level.ONAL_AOD,
 };
 
 export const coverProps = {
@@ -44,7 +53,8 @@ export const coverProps = {
   center_y: 240,
   radius: 20,
   // color: colors.aod,
-  color: 0xDFD3C3
+  color: 0xDFD3C3,
+  show_level: hmUI.show_level.ONLY_NORMAL,
 };
 
 export const screwProps = {
@@ -52,6 +62,15 @@ export const screwProps = {
   center_y: 240,
   radius: 10,
   color: colors.background,
+  show_level: hmUI.show_level.ONLY_NORMAL | hmUI.show_level.ONAL_AOD,
+};
+
+export const aodCoverProps = {
+  center_x: 240,
+  center_y: 240,
+  radius: 20,
+  color: colors.aod,
+  show_level: hmUI.show_level.ONAL_AOD,
 };
 
 // Outside progress arcs
@@ -219,7 +238,8 @@ export const topDialText = {
   align_h: hmUI.align.CENTER_H,
   align_v: hmUI.align.CENTER_V,
   text_style: hmUI.text_style.NONE,
-  text: ''
+  text: '',
+  show_level: hmUI.show_level.ONLY_NORMAL,
 };
 
 export const topDialTextImg = {
@@ -230,6 +250,7 @@ export const topDialTextImg = {
   align_h: hmUI.align.CENTER_H,
   align_v: hmUI.align.CENTER_V,
   text_style: hmUI.text_style.NONE,
+  show_level: hmUI.show_level.ONLY_NORMAL,
 };
 
 export const topDialIcon = {

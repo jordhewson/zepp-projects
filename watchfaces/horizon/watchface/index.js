@@ -23,7 +23,8 @@ import {
   bottomDialLink,
   monthText,
   arc1Progress,
-  arc2Progress,
+  arc2aProgress,
+  arc2bProgress,
   arc3Progress,
   arc4Progress,
   arc3Icon,
@@ -38,6 +39,8 @@ import {
   aodBgProps,
   aodPointerProps,
   aodCoverProps,
+  arc2aIcon,
+  arc2bIcon,
 } from './index.r.layout';
 
 let editGroup = null;
@@ -146,6 +149,27 @@ function getThemeColors(type) {
       secondary: colors.oxide_red,
       secondary_dark: colors.graphite,
     },
+    15: {
+      background: 'background/bg_tillies.png',
+      primary: colors.wattle_ochre,
+      primary_dark: colors.deep_gum_leaf,
+      secondary: colors.bush_sage,
+      secondary_dark: colors.muted_evergreen,
+    },
+    16: {
+      background: 'background/bg_heather.png',
+      primary: colors.heather_bloom,
+      primary_dark: colors.peat_shadow,
+      secondary: colors.loch_mist,
+      secondary_dark: colors.granite_track,
+    },
+    17: {
+      background: 'background/bg_momiji.png',
+      primary: colors.autumn_maple,
+      primary_dark: colors.chestnut_shadow,
+      secondary: colors.ginkgo_leaf,
+      secondary_dark: colors.moss_bark,
+    }
   };
   return themeMap[type] || {
     background: 'background/bg_bush.png',
@@ -203,7 +227,11 @@ WatchFace({
       { type: 11, preview: 'colors/scuba.png', title_sc: '水肺', title_tc: '水肺', title_en: 'Scuba' },
       { type: 12, preview: 'colors/submarine.png', title_sc: '潜艇', title_tc: '潛艇', title_en: 'Submarine' },
       { type: 13, preview: 'colors/terracotta.png', title_sc: '陶土', title_tc: '陶土', title_en: 'Terracotta' },
-      { type: 14, preview: 'colors/dusk.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Dusk' }
+      { type: 14, preview: 'colors/dusk.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Dusk' },
+      { type: 15, preview: 'colors/tillies.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Tillies' },
+      { type: 16, preview: 'colors/heather.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Heather' },
+      { type: 17, preview: 'colors/momiji.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Momiji' },
+      
     ]
     editGroup = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_GROUP, {
       edit_id: 101,
@@ -265,10 +293,10 @@ WatchFace({
 
     // Arc 1
     hmUI.createWidget(hmUI.widget.IMG, arc1Icon);
-    const arc1Stats = hmUI.createWidget(hmUI.widget.TEXT, {
-      ...arc1Text,
-      text: `14`
-    });
+    // const arc1Stats = hmUI.createWidget(hmUI.widget.TEXT, {
+    //   ...arc1Text,
+    //   text: `14`
+    // });
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc1Progress,
       level: 100,
@@ -276,24 +304,35 @@ WatchFace({
     });
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
       ...arc1Progress,
-      type: hmUI.data_type.WEATHER_CURRENT,
+      type: hmUI.data_type.STRESS,
       color: secondary,
     });
 
     // Arc 2
-    const sunIcon = hmUI.createWidget(hmUI.widget.IMG, arc2Icon);
-    const arc2Stats = hmUI.createWidget(hmUI.widget.TEXT, {
-      ...arc2Text,
-      text: '16:24'
-    });
+    hmUI.createWidget(hmUI.widget.IMG, arc2aIcon);
+    hmUI.createWidget(hmUI.widget.IMG, arc2bIcon);
+    // const arc2Stats = hmUI.createWidget(hmUI.widget.TEXT, {
+    //   ...arc2Text,
+    //   text: ''
+    // });
     hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
-      ...arc2Progress,
+      ...arc2aProgress,
       level: 100,
       color: secondary_dark
     });
-    const arc2 = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
-      ...arc2Progress,
-      level: 0,
+    hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
+      ...arc2bProgress,
+      level: 100,
+      color: secondary_dark
+    });
+    hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
+      ...arc2aProgress,
+      type: hmUI.data_type.TRAINING_LOAD,
+      color: secondary,
+    });
+    hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {
+      ...arc2bProgress,
+      type: hmUI.data_type.RECOVERY_TIME,
       color: secondary,
     });
 
@@ -409,54 +448,56 @@ WatchFace({
       const steps = this.stepSensor
       const heartRate = heart.last;
       const rounded = formatK(steps.current)
-      const weather = this.weatherSensor.getForecastWeather()
-      const maxTemp = weather.forecastData.data[0].high
-      const minTemp = weather.forecastData.data[0].low
-      const sunrise = weather.tideData.data[0].sunrise
-      const sunset = weather.tideData.data[0].sunset
-      const sunriseTomorrow = weather.tideData.data[1].sunrise
 
-      const weatherText = `${maxTemp}°`
-      const tomorrowBool = getTimeInMins(time) > getTimeInMins(sunset);
-      const sunriseBool = getTimeInMins(time) < getTimeInMins(sunrise);
-      const sunText =
-        tomorrowBool ?
-          `${sunriseTomorrow.hour}:${sunriseTomorrow.minute}` :
-          sunriseBool ?
-            `${sunrise.hour}:${sunrise.minute}` :
-            `${sunset.hour}:${sunset.minute}`;
-      const sunIconStatus =
-        tomorrowBool || sunriseBool ?
-          'widget/icon/sunrise.png' :
-          'widget/icon/sunset.png';
-      const totalDay = (getTimeInMins(sunset) - getTimeInMins(sunrise));
-      const elapsedDay = (getTimeInMins(sunset) - getTimeInMins(time));
-      const sunRemaining = Math.round(elapsedDay / totalDay * 100);
-      const totalNight =
-        (getTimeInMins(sunriseTomorrow) + (24 * 60) - getTimeInMins(sunset));
-      const elapsedNight =
-        time.hour < sunset.hour ?
-          (getTimeInMins(time) + (24 * 60) - getTimeInMins(sunset)) :
-          (getTimeInMins(time) - getTimeInMins(sunset));
-      const nightProgress = Math.round(elapsedNight / totalNight * 100);
-      const sunLevel =
-        tomorrowBool || sunriseBool ?
-          nightProgress :
-          sunRemaining;
+      // Archived: Weather sensor for temp and sunrise/sunset
+      // const weather = this.weatherSensor.getForecastWeather()
+      // const maxTemp = weather.forecastData.data[0].high
+      // const minTemp = weather.forecastData.data[0].low
+      // const sunrise = weather.tideData.data[0].sunrise
+      // const sunset = weather.tideData.data[0].sunset
+      // const sunriseTomorrow = weather.tideData.data[1].sunrise
+
+      // const weatherText = `${maxTemp}°`
+      // const tomorrowBool = getTimeInMins(time) > getTimeInMins(sunset);
+      // const sunriseBool = getTimeInMins(time) < getTimeInMins(sunrise);
+      // const sunText =
+      //   tomorrowBool ?
+      //     `${sunriseTomorrow.hour}:${sunriseTomorrow.minute}` :
+      //     sunriseBool ?
+      //       `${sunrise.hour}:${sunrise.minute}` :
+      //       `${sunset.hour}:${sunset.minute}`;
+      // const sunIconStatus =
+      //   tomorrowBool || sunriseBool ?
+      //     'widget/icon/sunrise.png' :
+      //     'widget/icon/sunset.png';
+      // const totalDay = (getTimeInMins(sunset) - getTimeInMins(sunrise));
+      // const elapsedDay = (getTimeInMins(sunset) - getTimeInMins(time));
+      // const sunRemaining = Math.round(elapsedDay / totalDay * 100);
+      // const totalNight =
+      //   (getTimeInMins(sunriseTomorrow) + (24 * 60) - getTimeInMins(sunset));
+      // const elapsedNight =
+      //   time.hour < sunset.hour ?
+      //     (getTimeInMins(time) + (24 * 60) - getTimeInMins(sunset)) :
+      //     (getTimeInMins(time) - getTimeInMins(sunset));
+      // const nightProgress = Math.round(elapsedNight / totalNight * 100);
+      // const sunLevel =
+      //   tomorrowBool || sunriseBool ?
+      //     nightProgress :
+      //     sunRemaining;
       const stepText = `${rounded}`;
       const heartText = `${heartRate}`;
 
-      console.log(`Sun remaining: ${sunRemaining}, night progress: ${nightProgress}, sun level: ${sunLevel}`)
+      // console.log(`Sun remaining: ${sunRemaining}, night progress: ${nightProgress}, sun level: ${sunLevel}`)
 
-      sunIcon.setProperty(hmUI.prop.MORE, {
-        ...arc2Icon,
-        src: sunIconStatus
-      })
+      // sunIcon.setProperty(hmUI.prop.MORE, {
+      //   ...arc2Icon,
+      //   src: sunIconStatus
+      // })
 
-      arc2.setProperty(hmUI.prop.MORE, { ...arc2Progress, color: secondary, level: sunLevel })
+      // arc2.setProperty(hmUI.prop.MORE, { ...arc2Progress, color: secondary, level: sunLevel })
 
-      arc1Stats.setProperty(hmUI.prop.MORE, { ...arc1Text, text: weatherText })
-      arc2Stats.setProperty(hmUI.prop.MORE, { ...arc2Text, text: sunText })
+      // arc1Stats.setProperty(hmUI.prop.MORE, { ...arc1Text, text: weatherText })
+      // arc2Stats.setProperty(hmUI.prop.MORE, { ...arc2Text, text: sunText })
       arc3Stats.setProperty(hmUI.prop.MORE, { ...arc3Text, text: stepText })
       arc4Stats.setProperty(hmUI.prop.MORE, { ...arc4Text, text: heartText })
 

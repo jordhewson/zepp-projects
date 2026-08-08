@@ -7,14 +7,14 @@ export const SCREEN = {
   centerY: height / 2,
 };
 
-  export const DATE = {
-    x: px(224),
-    y: px(286),
-    width: px(200),
-    height: px(25),
-    weekDays: 
-      ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
-  };
+export const DATE = {
+  x: px(224),
+  y: px(286),
+  width: px(200),
+  height: px(25),
+  weekDays:
+    ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'],
+};
 
 export const dayOfWeek = [
   'MON',
@@ -61,6 +61,9 @@ export const colors = {
   eucalyptus: 0xB2BEB5,
   sage: 0x8A9A5B,
   dark_evergreen: 0x283D3B,
+  deep_gum_leaf: 0x1B2A20,
+  bush_sage: 0x4A6B53,
+  muted_evergreen: 0x233328,
 
   // Blues / Deep Sea / Pacific
   midnight_ocean: 0x223F58,
@@ -90,6 +93,7 @@ export const colors = {
   goldenrod: 0xDAA520,
   champagne: 0xF1E5AC,
   ochre: 0xCC7722,
+  wattle_ochre: 0xD4A373,
 
   // Browns / Neutrals / Sand
   dark_espresso: 0x3D2D29,
@@ -105,7 +109,19 @@ export const colors = {
   // Grayscale / Technical
   slate_gray: 0x666666,
   charcoal: 0x333333,
-  graphite: 0x3D3D3D
+  graphite: 0x3D3D3D,
+
+  // Heather
+  heather_bloom: 0x9E7B9B,
+  peat_shadow: 0x241A24,
+  loch_mist: 0x768A96,
+  granite_track: 0x2A3439,
+
+  // Momiji
+  autumn_maple: 0xBC4749,
+  chestnut_shadow: 0x2D1517,
+  ginkgo_leaf: 0xE9C46A,
+  moss_bark: 0x332B1A,
 };
 
 export const fontFamily = {

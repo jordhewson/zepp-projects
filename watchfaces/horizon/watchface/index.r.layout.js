@@ -85,13 +85,19 @@ export const progressArc = {
 
 export const arc1Progress = {
   ...progressArc,
-  start_angle: -60,
+  start_angle: -80,
   end_angle: -10,
 };
 
-export const arc2Progress = {
+export const arc2aProgress = {
   ...progressArc,
-  start_angle: 30,
+  start_angle: 43,
+  end_angle: 10,
+};
+
+export const arc2bProgress = {
+  ...progressArc,
+  start_angle: 47,
   end_angle: 80,
 };
 
@@ -109,22 +115,32 @@ export const arc4Progress = {
 
 // Outside Icons
 export const arc1Icon = {
-  x: 30,
-  y: 140,
+  x: 10,
+  y: 210,
   h: 30,
   w: 30,
-  angle: -80,
-  src: 'widget/icon/sun.png',
+  angle: 0,
+  src: 'widget/icon/smile.png',
   show_level: hmUI.show_level.ONLY_NORMAL,
 };
 
-export const arc2Icon = {
-  x: 320,
-  y: 30,
+export const arc2aIcon = {
+  x: 245,
+  y: 5,
   h: 30,
   w: 30,
   angle: 10,
-  src: 'widget/icon/sunrise.png',
+  src: 'widget/icon/dumbbell.png',
+  show_level: hmUI.show_level.ONLY_NORMAL,
+};
+
+export const arc2bIcon = {
+  x: 445,
+  y: 210,
+  h: 30,
+  w: 30,
+  angle: 10,
+  src: 'widget/icon/clock.png',
   show_level: hmUI.show_level.ONLY_NORMAL,
 };
 

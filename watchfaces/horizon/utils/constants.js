@@ -122,6 +122,24 @@ export const colors = {
   chestnut_shadow: 0x2D1517,
   ginkgo_leaf: 0xE9C46A,
   moss_bark: 0x332B1A,
+
+  // Mirage
+  desert_sand: 0xE6CCB2,
+  dune_shadow: 0x2B2119,
+  terracotta_gold: 0xDDA15E,
+  earthy_clay: 0x3A2E25,
+
+  // Stealth
+  icy_white: 0xE0E1DD,
+  obsidian_well: 0x1B263B,
+  titanium_gray: 0x778DA9,
+  slate_track: 0x222E3D,
+
+  // Signal
+  cyber_lime: 0xD4E157,
+  dark_forest_well: 0x1B2412,
+  electric_sage: 0x80CBC4,
+  deep_slate_track: 0x182C28,
 };
 
 export const fontFamily = {

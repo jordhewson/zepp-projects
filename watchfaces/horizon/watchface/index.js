@@ -59,116 +59,109 @@ function getThemeColors(type) {
       secondary_dark: colors.deep_moss,
     },
     2: {
-      background: 'background/bg_pacific.png',
-      primary: colors.steel_blue,
-      primary_dark: colors.midnight_ocean,
-      secondary: colors.sky_blue,
-      secondary_dark: colors.midnight_ocean,
-    },
-    3: {
       background: 'background/bg_flare.png',
       primary: colors.flare_red,
       primary_dark: colors.blood_moon,
       secondary: colors.slate_gray,
       secondary_dark: colors.charcoal,
     },
-    4: {
+    3: {
       background: 'background/bg_golden_hour.png',
       primary: colors.goldenrod,
       primary_dark: colors.dark_tobacco,
       secondary: colors.amber_honey,
       secondary_dark: colors.burnt_oak,
     },
-    5: {
+    4: {
       background: 'background/bg_poppy.png',
       primary: colors.terracotta,
       primary_dark: colors.dark_espresso,
       secondary: colors.parchment,
       secondary_dark: colors.dark_espresso,
     },
-    6: {
+    5: {
       background: 'background/bg_verdant.png',
       primary: colors.lively_leaf,
       primary_dark: colors.deep_ivy,
       secondary: colors.mint_fern,
       secondary_dark: colors.forest_shadow,
     },
-    7: {
-      background: 'background/bg_deep_sea.png',
-      primary: colors.ice_blue,
-      primary_dark: colors.ocean_blue,
-      secondary: colors.pacific_blue,
-      secondary_dark: colors.abyssal_navy,
-    },
-    8: {
-      background: 'background/bg_sea_glass.png',
-      primary: colors.sage,
-      primary_dark: colors.graphite,
-      secondary: colors.eucalyptus,
-      secondary_dark: colors.graphite,
-    },
-    9: {
+    6: {
       background: 'background/bg_twilight.png',
       primary: colors.muted_violet,
       primary_dark: colors.night_plum,
       secondary: colors.thistle,
       secondary_dark: colors.night_plum,
     },
-    10: {
+    7: {
       background: 'background/bg_afterglow.png',
       primary: colors.champagne,
       primary_dark: colors.roast_coffee,
       secondary: colors.goldenrod,
       secondary_dark: colors.roast_coffee,
     },
-    11: {
+    8: {
       background: 'background/bg_scuba.png',
       primary: colors.air_force_blue,
       primary_dark: colors.prussian_blue,
       secondary: colors.air_force_blue,
       secondary_dark: colors.prussian_blue,
     },
-    12: {
+    9: {
       background: 'background/bg_submarine.png',
       primary: colors.crimson_clay,
       primary_dark: colors.burnt_sienna,
       secondary: colors.petrol_teal,
       secondary_dark: colors.dark_evergreen,
     },
-    13: {
-      background: 'background/bg_terracotta.png',
-      primary: colors.faded_rose,
-      primary_dark: colors.dark_cacao,
-      secondary: colors.faded_rose,
-      secondary_dark: colors.dark_cacao,
-    },
-    14: {
+    10: {
       background: 'background/bg_dusk.png',
       primary: colors.ochre,
       primary_dark: colors.graphite,
       secondary: colors.oxide_red,
       secondary_dark: colors.graphite,
     },
-    15: {
+    11: {
       background: 'background/bg_tillies.png',
       primary: colors.wattle_ochre,
       primary_dark: colors.deep_gum_leaf,
       secondary: colors.bush_sage,
       secondary_dark: colors.muted_evergreen,
     },
-    16: {
+    12: {
       background: 'background/bg_heather.png',
       primary: colors.heather_bloom,
       primary_dark: colors.peat_shadow,
       secondary: colors.loch_mist,
       secondary_dark: colors.granite_track,
     },
-    17: {
+    13: {
       background: 'background/bg_momiji.png',
       primary: colors.autumn_maple,
       primary_dark: colors.chestnut_shadow,
       secondary: colors.ginkgo_leaf,
       secondary_dark: colors.moss_bark,
+    },
+    14: {
+      background: 'background/bg_mirage.png',
+      primary: colors.desert_sand,
+      primary_dark: colors.dune_shadow,
+      secondary: colors.terracotta_gold,
+      secondary_dark: colors.earthy_clay,
+    },
+    15: {
+      background: 'background/bg_stealth.png',
+      primary: colors.icy_white,
+      primary_dark: colors.obsidian_well,
+      secondary: colors.titanium_gray,
+      secondary_dark: colors.slate_track,
+    },
+    16: {
+      background: 'background/bg_signal.png',
+      primary: colors.cyber_lime,
+      primary_dark: colors.dark_forest_well,
+      secondary: colors.electric_sage,
+      secondary_dark: colors.deep_slate_track,
     }
   };
   return themeMap[type] || {
@@ -215,23 +208,22 @@ WatchFace({
   buildColorSelector() {
     const types = [
       { type: 1, preview: 'colors/bush.png', title_sc: '灌木', title_tc: '灌木', title_en: 'Bush' },
-      { type: 2, preview: 'colors/pacific.png', title_sc: '太平洋', title_tc: '太平洋', title_en: 'Pacific' },
-      { type: 3, preview: 'colors/flare.png', title_sc: '闪耀', title_tc: '闪耀', title_en: 'Flare' },
-      { type: 4, preview: 'colors/golden_hour.png', title_sc: '黄金时刻', title_tc: '黃金時刻', title_en: 'Golden Hour' },
-      { type: 5, preview: 'colors/poppy.png', title_sc: '罂粟', title_tc: '罌粟', title_en: 'Poppy' },
-      { type: 6, preview: 'colors/verdant.png', title_sc: '青葱', title_tc: '青蔥', title_en: 'Verdant' },
-      { type: 7, preview: 'colors/deep_sea.png', title_sc: '深海', title_tc: '深海', title_en: 'Deep Sea' },
-      { type: 8, preview: 'colors/sea_glass.png', title_sc: '海玻璃', title_tc: '海玻璃', title_en: 'Sea Glass' },
-      { type: 9, preview: 'colors/twilight.png', title_sc: '暮色', title_tc: '暮色', title_en: 'Twilight' },
-      { type: 10, preview: 'colors/afterglow.png', title_sc: '晚霞', title_tc: '晚霞', title_en: 'Afterglow' },
-      { type: 11, preview: 'colors/scuba.png', title_sc: '水肺', title_tc: '水肺', title_en: 'Scuba' },
-      { type: 12, preview: 'colors/submarine.png', title_sc: '潜艇', title_tc: '潛艇', title_en: 'Submarine' },
-      { type: 13, preview: 'colors/terracotta.png', title_sc: '陶土', title_tc: '陶土', title_en: 'Terracotta' },
-      { type: 14, preview: 'colors/dusk.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Dusk' },
-      { type: 15, preview: 'colors/tillies.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Tillies' },
-      { type: 16, preview: 'colors/heather.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Heather' },
-      { type: 17, preview: 'colors/momiji.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Momiji' },
-      
+      { type: 2, preview: 'colors/flare.png', title_sc: '闪耀', title_tc: '闪耀', title_en: 'Flare' },
+      { type: 3, preview: 'colors/golden_hour.png', title_sc: '黄金时刻', title_tc: '黃金時刻', title_en: 'Golden Hour' },
+      { type: 4, preview: 'colors/poppy.png', title_sc: '罂粟', title_tc: '罌粟', title_en: 'Poppy' },
+      { type: 5, preview: 'colors/verdant.png', title_sc: '青葱', title_tc: '青蔥', title_en: 'Verdant' },
+      { type: 6, preview: 'colors/twilight.png', title_sc: '暮色', title_tc: '暮色', title_en: 'Twilight' },
+      { type: 7, preview: 'colors/afterglow.png', title_sc: '晚霞', title_tc: '晚霞', title_en: 'Afterglow' },
+      { type: 8, preview: 'colors/scuba.png', title_sc: '水肺', title_tc: '水肺', title_en: 'Scuba' },
+      { type: 9, preview: 'colors/submarine.png', title_sc: '潜艇', title_tc: '潛艇', title_en: 'Submarine' },
+      { type: 10, preview: 'colors/dusk.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Dusk' },
+      { type: 11, preview: 'colors/tillies.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Tillies' },
+      { type: 12, preview: 'colors/heather.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Heather' },
+      { type: 13, preview: 'colors/momiji.png', title_sc: '黄昏', title_tc: '黃昏', title_en: 'Momiji' },
+      { type: 14, preview: 'colors/mirage.png', title_sc: '蜃景', title_tc: '蜃景', title_en: 'Mirage' },
+      { type: 15, preview: 'colors/stealth.png', title_sc: '隐形', title_tc: '隱形', title_en: 'Stealth' },
+      { type: 16, preview: 'colors/signal.png', title_sc: '信号', title_tc: '信號', title_en: 'Signal' },
+
     ]
     editGroup = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_GROUP, {
       edit_id: 101,
